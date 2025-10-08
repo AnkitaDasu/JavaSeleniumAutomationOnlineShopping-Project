@@ -1,0 +1,38 @@
+package Test;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
+
+public class IRCTC_Booking {
+
+	public static void main(String[] args) throws InterruptedException {
+    WebDriver driver=new ChromeDriver();
+    driver.manage().window().maximize();
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+    driver.get("https://www.irctc.co.in/nget/train-search");
+    Thread.sleep(3000);
+    driver.findElement(By.xpath("//button[@class='btn btn-primary']")).click();
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+    driver.findElement(By.xpath("//input[@aria-controls='pr_id_1_list']")).sendKeys("Bengaluru");
+    WebElement fromOption = wait.until(ExpectedConditions.elementToBeClickable(
+            By.xpath("//span[normalize-space()='KSR BENGALURU - SBC']")));
+    fromOption.click();
+    Thread.sleep(3000);
+    driver.findElement(By.xpath("//input[@aria-controls='pr_id_2_list']")).sendKeys("Guwahati");
+    Thread.sleep(3000);
+    driver.findElement(By.xpath("//div[@class='ui-datepicker-group ui-widget-content ng-tns-c59-10 ng-star-inserted']/..//a[@class='class=\"ui-state-default ng-tns-c59-10 ui-state-active ui-state-highlight ng-star-inserted']")).click();
+    Thread.sleep(3000);
+   WebElement date = driver.findElement(By.className("class=\"ng-tns-c65-11 ui-dropdown ui-widget ui-state-default ui-corner-all ui-dropdown-open\""));
+    Select d_date=new Select(date);
+    d_date.selectByContainsVisibleText("AC First Class (1A) ");
+    
+	}
+
+}
