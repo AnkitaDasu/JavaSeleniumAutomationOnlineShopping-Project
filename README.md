@@ -1,4 +1,4 @@
 # JavaSeleniumAutomationOnlineShopping-Project
-OnlineShoppingPreoject
-IRCTC booking
-Credentail Handling via Excel Sheet
+# OnlineShoppingProject
+# IRCTC booking
+# Credentail Handling via Excel Sheet
